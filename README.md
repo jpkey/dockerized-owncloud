@@ -39,6 +39,7 @@ Some scripts contain sudo commands, therefore I recommend using some sudo comman
 5. refresh your browser 
 6. **optional** run script 4 if you want to enable remote access from your machine or smartphone
   - the scipt adds an ip address entry in owncloud/config/config.php and enables iptables forwarding
+  - look into the 4_allow_remote_access.sh script for further usage details
   
 - try the tiny **container manager**: ./manger.sh help
   - ./manager stop      -> stops necessary containers
