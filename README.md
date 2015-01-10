@@ -16,6 +16,8 @@ dockerized-owncloud
     - user must be in group www-data
 - allow trusted hosts to enable remote access from the host machine (see script 4_*)
 - automated owncloud backups and database dumps
+- possiblity to automatically add and run additions (see usage instructions for details)
+ 
 
 # requirements
 - docker >= 1.4.1
@@ -54,6 +56,21 @@ Some scripts contain sudo commands, therefore I recommend using some sudo comman
   - usage: 5_backup.sh </path/to/your/backup/destination>
     - creates compressed archive of your owncloud installation (the docker way)
     - creates a sql dump of the database
+
+- **current additions** 
+    1) configure php application server to use system cron instead of ajax cron upon user request
+      - call script ./6_install_additions.sh additions/add_system_cron.sh ct_php5
+      - run: source 0_configure.sh
+      - run: sudo sed -i "/CONFIG = array (/a 'overwritewebroot' => '/owncloud'," $OC_INSTALL_DIR/config/config.php
+      - now you can go to the admin console of your owncloud installation and check:  
+         (x) Cron
+         Use system's cron service to call the cron.php file every 15 minutes. 
+      - refresh the page and you're good to go
+
+  - additions are more specific to your installation therefore you have to adjust variables and paths within your additions as they are executed within a container scope, but you can of course use the container environment variables in the additions scripts
+  - call script ./6_install_additions.sh <additions/my_addition.sh> <container_[name|id]>
+  
+
 
 # owncloud
 - owncloud directory in container: /var/www/owncloud
