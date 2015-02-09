@@ -2,6 +2,7 @@ dockerized-owncloud
 ===================
 
 #features
+- this branch is for version 8.0 of owncloud!
 - separation of concerns: only one task per container
   - webserver container (nginx)
   - application server container (php5-fgm)
