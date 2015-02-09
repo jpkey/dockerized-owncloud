@@ -19,6 +19,7 @@ RUN         apt-get update && apt-get install -y php5-cli \
 ENV         LC_ALL C.UTF-8
 
 ADD         php.ini /etc/php5/fpm/
+ADD         php-cli.ini /etc/php5/cli/php.ini
 ADD         migrate_db.sh /root/migrate_db.sh
 RUN         chmod +x /root/migrate_db.sh
 RUN         sed 's/listen = \/var\/run\/php5-fpm.sock/listen = 0.0.0.0:9000/' -i /etc/php5/fpm/pool.d/www.conf 

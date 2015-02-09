@@ -1,15 +1,14 @@
 #!/bin/bash
 
-latest=owncloud-latest.tar.bz2
+latest=owncloud-8.0.0.tar.bz2
 
 if [ -f "$latest" ] 
 then 
     echo "$latest file is already available, please move or delete it and try again"
-    exit 
+    exit
 fi
 
-
-wget http://download.owncloud.org/community/owncloud-latest.tar.bz2
+wget https://download.owncloud.org/community/owncloud-8.0.0.tar.bz2
 
 tar xvf $latest -C $OC_PARENT_DIR
 
